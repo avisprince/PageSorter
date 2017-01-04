@@ -6,8 +6,4 @@
 
 <div>I am running</div>
 
-<div><h3>{{selectedPage.id | async}}</h3></div>
-
-<!--<div id="list">
-    <div *ngFor="let page of pages"><h3>{{page.id}}</h3></div>
-</div>-->
+<pages [pages]="pages | async" [selectedPage]="selectedPage | async"></pages>
