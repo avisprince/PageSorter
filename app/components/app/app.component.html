@@ -1,9 +1,3 @@
-<!--<div id="bucketContainer">
-    <div class="bucket" (click)="bucketClick()"></div>
-    <div class="bucket"></div>
-    <div class="bucket"></div>
-</div>-->
-
-<div>I am running</div>
-
 <pages [pages]="pages | async" [selectedPage]="selectedPage | async" (selectPage)="selectPage($event)"></pages>
+
+<bucket [pages]="bucketPages | async" (selectBucket)="selectBucket($event)"></bucket>

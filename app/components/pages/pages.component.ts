@@ -1,7 +1,4 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-
-import { PageSorterStore } from '../../store/pageSorterStore';
 import { Page } from '../../models/Page';
 
 @Component({
