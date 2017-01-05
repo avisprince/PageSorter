@@ -6,7 +6,6 @@ import { AppComponent }  from './components/app/app.component';
 import { PagesComponent }  from './components/pages/pages.component';
 import { pagesReducer } from './reducers/pagesReducer';
 import { selectedPageReducer } from './reducers/selectedPageReducer';
-import { counterReducer } from './reducers/counter';
 
 import { PagesService } from './services/pagesService';
 
@@ -14,7 +13,6 @@ import { PagesService } from './services/pagesService';
   imports:      [ 
       BrowserModule,
       StoreModule.provideStore({ pages: pagesReducer, selectedPage: selectedPageReducer })
-      //StoreModule.provideStore({ counter: counterReducer })
   ],
   declarations: [ AppComponent, PagesComponent ],
   providers:    [ PagesService ],

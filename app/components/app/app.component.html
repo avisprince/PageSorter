@@ -6,4 +6,4 @@
 
 <div>I am running</div>
 
-<pages [pages]="pages | async" [selectedPage]="selectedPage | async"></pages>
+<pages [pages]="pages | async" [selectedPage]="selectedPage | async" (selectPage)="selectPage($event)"></pages>
