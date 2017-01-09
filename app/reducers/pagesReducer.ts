@@ -13,6 +13,10 @@ export const pagesReducer: ActionReducer<Page[]> = (state: Page[] = initialPages
     switch (action.type) {
         case 'UPLOAD_PAGES':
             return action.payload;
+        case 'ADD_PAGE':
+            return [...state, action.payload];
+        case 'DELETE_PAGE':
+            return state.filter(p => p.id !== action.payload.id);
         default:
             return state;
     }

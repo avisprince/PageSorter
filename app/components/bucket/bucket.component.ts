@@ -4,15 +4,9 @@ import { Bucket } from '../../models/Bucket';
 
 @Component({
 	selector: 'bucket',
-	templateUrl: 'app/components/bucket/bucket.component.html'
+	templateUrl: 'app/components/bucket/bucket.component.html',
+	styleUrls: ['app/components/bucket/bucket.component.less'],
 })
 export class BucketComponent {
-	@Input() pages: Page[];
-	@Output() selectBucket = new EventEmitter();
-
-    constructor(private bucket: Bucket){};
-
-    bucketClick() {
-        this.selectBucket.emit(this.bucket);
-    }
+	@Input() bucket: Bucket;
 }
