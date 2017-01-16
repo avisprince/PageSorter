@@ -1,3 +1,1 @@
-<div *ngFor="let bucket of buckets">
-    <bucket [bucket]="bucket" (click)="selectBucket.emit(bucket)"></bucket>
-</div>
+<bucket *ngFor="let bucket of buckets" [bucket]="bucket" (click)="selectBucket.emit(bucket)"></bucket>

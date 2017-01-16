@@ -8,6 +8,7 @@ import { Page } from '../../models/Page';
 import { Bucket } from '../../models/Bucket';
 
 import { PagesComponent } from '../pages/pages.component';
+import { SelectedPageComponent } from '../selectedPage/selectedPage.component';
 import { BucketComponent } from '../bucket/bucket.component';
 import { BucketListComponent } from '../bucketList/bucketList.component';
 

@@ -1,5 +1,11 @@
-<pages [pages]="pages | async" [selectedPage]="selectedPage | async" (selectPage)="selectPage($event)"></pages>
+<selectedPage [selectedPage]="selectedPage | async"></selectedPage>
 
-<bucketList [buckets]="buckets | async" (selectBucket)="selectBucket($event)"></bucketList>
+<div id="bucketList">
+    <bucketList [buckets]="buckets | async" (selectBucket)="selectBucket($event)"></bucketList>
+</div>
 
 <button (click)="addBucket()">Add Bucket</button>
+
+<div id="pageList">
+    <pages [pages]="pages | async" (selectPage)="selectPage($event)"></pages>
+</div>

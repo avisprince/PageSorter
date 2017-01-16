@@ -3,10 +3,10 @@ import { Page } from '../../models/Page';
 
 @Component({
 	selector: 'pages',
-	templateUrl: 'app/components/pages/pages.component.html'
+	templateUrl: 'app/components/pages/pages.component.html',
+	styleUrls: ['app/components/pages/pages.component.less']
 })
 export class PagesComponent {
 	@Input() pages: Page[];
-    @Input() selectedPage: Page;
 	@Output() selectPage = new EventEmitter();
 }

@@ -1,5 +1,3 @@
-<div><h3>{{selectedPage.id}}</h3></div>
-
-<div id="list">
-    <div *ngFor="let page of pages"><h3 (click)="selectPage.emit(page)">{{page.id}}</h3></div>
+<div id="pageList">
+    <div class="page" (click)="selectPage.emit(page)" *ngFor="let page of pages"><h3 >{{page.id}}</h3></div>
 </div>
