@@ -21,13 +21,11 @@ export class AppComponent {
 	private pages: Observable<Page[]>;
 	private selectedPage: Observable<Page>;
 	private buckets: Observable<Bucket[]>;
-	private _selectedPage: Page;
 
 	constructor(private pagesService: PagesService, private store: Store<PageSorterStore>) {
 		this.pages = pagesService.pages;
 		this.buckets = store.select('buckets');
 		this.selectedPage = store.select('selectedPage');
-		this.selectedPage.subscribe(p => this._selectedPage = p);
 	}
 
 	selectPage(page: Page) {
@@ -35,6 +33,10 @@ export class AppComponent {
 	}
 
 	selectBucket(bucket: Bucket) {
-		this.store.dispatch({ type: "SELECT_BUCKET", payload: { bucket: bucket, page: this._selectedPage }});
+		this.store.dispatch({ type: "SELECT_BUCKET", payload: bucket });
+	}
+
+	addBucket() {
+		this.store.dispatch({ type: "ADD_BUCKET"});
 	}
 }

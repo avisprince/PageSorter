@@ -1,4 +1,5 @@
 import { Store, StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -7,17 +8,17 @@ import { PagesComponent }  from './components/pages/pages.component';
 import { BucketComponent } from './components/bucket/bucket.component';
 import { BucketListComponent } from './components/bucketList/bucketList.component';
 
-import { pagesReducer } from './reducers/pagesReducer';
-import { selectedPageReducer } from './reducers/selectedPageReducer';
-import { bucketsReducer } from './reducers/bucketsReducer';
-import { bucketReducer } from './reducers/bucketReducer';
+import { rootReducer } from './store/pageSorterStore';
+
+import { pageSorterStoreReducer } from './reducers/pageSorterStoreReducer';
 
 import { PagesService } from './services/pagesService';
 
 @NgModule({
   imports:      [ 
       BrowserModule,
-      StoreModule.provideStore({ pages: pagesReducer, selectedPage: selectedPageReducer, buckets: bucketsReducer, bucket: bucketReducer })
+      StoreModule.provideStore(pageSorterStoreReducer),
+      StoreDevtoolsModule.instrumentOnlyWithExtension()
   ],
   declarations: [ AppComponent, PagesComponent, BucketComponent, BucketListComponent ],
   providers:    [ PagesService ],

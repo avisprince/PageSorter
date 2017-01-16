@@ -2,21 +2,25 @@ import { ActionReducer, Action } from '@ngrx/store';
 import { Page } from '../models/Page';
 import { Bucket } from '../models/Bucket';
 
-import { bucketReducer } from './bucketReducer';
+import { pagesReducer } from './pagesReducer';
 
 const initialBuckets: Bucket[] = [
     { id: 0, pages: [] }
 ];
 
-export const bucketsReducer: ActionReducer<Bucket[]> = (state: Bucket[] = initialBuckets, action: Action) => {
+export const bucketsReducer: ActionReducer<Bucket[]> = (state: Bucket[], action: Action) => {
     switch (action.type) {
         case "SELECT_BUCKET":
             let index = state.findIndex(b => b.id === action.payload.bucket.id);
+            state[index].pages = pagesReducer(state[index].pages, {type: "ADD_PAGE", payload: action.payload.page});
+            
             return [
                 ...state.slice(0, index),
-                bucketReducer(state[index], {type: "ADD_PAGE", payload: action.payload.page}),
+                state[index],
                 ...state.slice(index+1)
             ];
+        case "ADD_BUCKET":
+            return state.concat([{ id: 1, pages: [] }]);
         default:
             return state;
     }

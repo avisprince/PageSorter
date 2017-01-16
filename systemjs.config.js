@@ -26,6 +26,7 @@
       // ngrx bundles
       '@ngrx/core': 'npm:@ngrx/core/bundles/core.umd.js',
       '@ngrx/store': 'npm:@ngrx/store/bundles/store.umd.js',
+      '@ngrx/store-devtools': 'npm:@ngrx/store-devtools/bundles/store-devtools.umd.js',
 
       // other libraries
       'rxjs':                      'npm:rxjs',
