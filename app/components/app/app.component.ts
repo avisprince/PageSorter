@@ -27,6 +27,8 @@ export class AppComponent {
 		this.pages = pagesService.pages;
 		this.buckets = store.select('buckets');
 		this.selectedPage = store.select('selectedPage');
+
+		this.pagesService.getName().then(r => window.alert(r));
 	}
 
 	selectPage(page: Page) {

@@ -18,7 +18,7 @@ const initialPages: Page[] = [
 ];
 
 const initialBuckets: Bucket[] = [
-    { id: 0, pages: [] }
+    { id: 0, pages: [], name: "" }
 ];
 
 const initialState = {

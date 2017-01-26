@@ -5,7 +5,7 @@ import { Bucket } from '../models/Bucket';
 import { pagesReducer } from './pagesReducer';
 
 const initialBuckets: Bucket[] = [
-    { id: 0, pages: [] }
+    { id: 0, pages: [], name: "" }
 ];
 
 export const bucketsReducer: ActionReducer<Bucket[]> = (state: Bucket[], action: Action) => {
@@ -20,7 +20,7 @@ export const bucketsReducer: ActionReducer<Bucket[]> = (state: Bucket[], action:
                 ...state.slice(index+1)
             ];
         case "ADD_BUCKET":
-            return state.concat([{ id: 1, pages: [] }]);
+            return state.concat([{ id: 1, pages: [], name: "" }]);
         default:
             return state;
     }
