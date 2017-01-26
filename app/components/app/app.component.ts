@@ -12,6 +12,8 @@ import { SelectedPageComponent } from '../selectedPage/selectedPage.component';
 import { BucketComponent } from '../bucket/bucket.component';
 import { BucketListComponent } from '../bucketList/bucketList.component';
 
+import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
+
 @Component({
 	selector: 'my-app',
 	templateUrl: 'app/components/app/app.component.html',
@@ -23,12 +25,13 @@ export class AppComponent {
 	private selectedPage: Observable<Page>;
 	private buckets: Observable<Bucket[]>;
 
-	constructor(private pagesService: PagesService, private store: Store<PageSorterStore>) {
+	private imageDataList: SafeUrl[];
+
+	constructor(private pagesService: PagesService, private store: Store<PageSorterStore>, private sanitizer: DomSanitizer) {
 		this.pages = pagesService.pages;
 		this.buckets = store.select('buckets');
 		this.selectedPage = store.select('selectedPage');
-
-		this.pagesService.getName().then(r => window.alert(r));
+		this.imageDataList = [];
 	}
 
 	selectPage(page: Page) {
@@ -41,5 +44,13 @@ export class AppComponent {
 
 	addBucket() {
 		this.store.dispatch({ type: "ADD_BUCKET"});
+	}
+
+	getThumbnails() {
+		this.pagesService.getPdfImage().then(imageDataList => {
+            for (var i = 0; i < imageDataList.length; i++) {
+                this.imageDataList[i] = this.sanitizer.bypassSecurityTrustUrl("data:image/png;base64," + imageDataList[i]);
+            }
+        });
 	}
 }

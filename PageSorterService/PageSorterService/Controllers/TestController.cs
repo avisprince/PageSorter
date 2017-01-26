@@ -3,9 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace PageSorterService.Controllers
 {
+    [EnableCors(origins: "http://localhost:3000", headers: "*", methods: "*")]
     public class TestController : ApiController
     {
         [HttpGet]

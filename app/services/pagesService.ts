@@ -15,11 +15,8 @@ export class PagesService {
         this.pages = store.select('pages');
     }
 
-    getName(): Promise<string> {
-        let headers = new Headers({'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'});
-        let options = new RequestOptions({ headers: headers });
-
-        return this.http.get("http://localhost:65115/api/name", options)
+    getPdfImage(): Promise<string[]> {
+        return this.http.get("api/pdf")
             .toPromise()
             .then(r => r.json())
             .catch(this.handleError);

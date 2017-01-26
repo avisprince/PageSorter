@@ -26,3 +26,8 @@ C:\Users\avisp\Documents\Git\PageSorter\PageSorterService\PageSorterService\bin\
 C:\Users\avisp\Documents\Git\PageSorter\PageSorterService\PageSorterService\obj\Debug\PageSorterService.csprojResolveAssemblyReference.cache
 C:\Users\avisp\Documents\Git\PageSorter\PageSorterService\PageSorterService\obj\Debug\PageSorterService.dll
 C:\Users\avisp\Documents\Git\PageSorter\PageSorterService\PageSorterService\obj\Debug\PageSorterService.pdb
+C:\Users\avisp\Documents\Git\PageSorter\PageSorterService\PageSorterService\bin\Magick.NET-Q16-AnyCPU.dll
+C:\Users\avisp\Documents\Git\PageSorter\PageSorterService\PageSorterService\bin\System.Web.Cors.dll
+C:\Users\avisp\Documents\Git\PageSorter\PageSorterService\PageSorterService\bin\System.Web.Http.Cors.dll
+C:\Users\avisp\Documents\Git\PageSorter\PageSorterService\PageSorterService\bin\Magick.NET-Q16-AnyCPU.xml
+C:\Users\avisp\Documents\Git\PageSorter\PageSorterService\PageSorterService\bin\System.Web.Http.Cors.xml
