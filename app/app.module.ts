@@ -7,14 +7,16 @@ import { HttpModule } from '@angular/http';
 import { AppComponent }  from './components/app/app.component';
 import { PagesComponent }  from './components/pages/pages.component';
 import { SelectedPageComponent }  from './components/selectedPage/selectedPage.component';
-import { BucketComponent } from './components/bucket/bucket.component';
-import { BucketListComponent } from './components/bucketList/bucketList.component';
+import { PileComponent } from './components/pile/pile.component';
+import { PileListComponent } from './components/pileList/pileList.component';
 
 import { rootReducer } from './store/pageSorterStore';
 
 import { pageSorterStoreReducer } from './reducers/pageSorterStoreReducer';
 
 import { PagesService } from './services/pagesService';
+
+import { PageBuilder } from './models/Page';
 
 @NgModule({
   imports:      [ 
@@ -23,8 +25,8 @@ import { PagesService } from './services/pagesService';
       StoreModule.provideStore(pageSorterStoreReducer),
       StoreDevtoolsModule.instrumentOnlyWithExtension()
   ],
-  declarations: [ AppComponent, PagesComponent, BucketComponent, BucketListComponent, SelectedPageComponent ],
-  providers:    [ PagesService ],
+  declarations: [ AppComponent, PagesComponent, PileComponent, PileListComponent, SelectedPageComponent ],
+  providers:    [ PagesService, PageBuilder ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

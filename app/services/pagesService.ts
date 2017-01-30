@@ -5,20 +5,27 @@ import { Headers, Http, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 import { PageSorterStore } from '../store/pageSorterStore';
-import { Page } from '../models/Page';
+import { Page, PageBuilder } from '../models/Page';
 
 @Injectable()
 export class PagesService {
-    pages: Observable<Page[]>;
-    
-    constructor(private store: Store<PageSorterStore>, private http: Http) {
-        this.pages = store.select('pages');
-    }
+    constructor(private store: Store<PageSorterStore>, private http: Http, private pageBuilder: PageBuilder) { }
 
-    getPdfImage(): Promise<string[]> {
-        return this.http.get("api/pdf")
+    getPdfImages(): Promise<void> {
+        return this.http.get("http://localhost:65115/api/pdf")
             .toPromise()
-            .then(r => r.json())
+            .then(r => {
+                let images = r.json();
+                let pageList: Page[] = [];
+
+                for (var i = 0; i < images.length; i++) {
+                    pageList[i] = this.pageBuilder.buildPage(i, images[i]);
+                }
+
+                this.store.dispatch({ type: "LOAD_PDF", payload: pageList });
+
+                Promise.resolve();
+            })
             .catch(this.handleError);
     }
 

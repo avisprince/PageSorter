@@ -1,6 +1,6 @@
 import { Page } from './Page';
 
-export interface Bucket {
+export interface Pile {
     id: number;
     name: string;
     pages: Page[];

@@ -5,14 +5,12 @@ import { Observable } from 'rxjs/Observable';
 import { PageSorterStore } from '../../store/pageSorterStore';
 import { PagesService } from '../../services/pagesService';
 import { Page } from '../../models/Page';
-import { Bucket } from '../../models/Bucket';
+import { Pile } from '../../models/Pile';
 
 import { PagesComponent } from '../pages/pages.component';
 import { SelectedPageComponent } from '../selectedPage/selectedPage.component';
-import { BucketComponent } from '../bucket/bucket.component';
-import { BucketListComponent } from '../bucketList/bucketList.component';
-
-import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
+import { PileComponent } from '../pile/pile.component';
+import { PileListComponent } from '../pileList/pileList.component';
 
 @Component({
 	selector: 'my-app',
@@ -23,34 +21,29 @@ import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browse
 export class AppComponent {
 	private pages: Observable<Page[]>;
 	private selectedPage: Observable<Page>;
-	private buckets: Observable<Bucket[]>;
+	private piles: Observable<Pile[]>;
 
-	private imageDataList: SafeUrl[];
-
-	constructor(private pagesService: PagesService, private store: Store<PageSorterStore>, private sanitizer: DomSanitizer) {
-		this.pages = pagesService.pages;
-		this.buckets = store.select('buckets');
+	constructor(private pagesService: PagesService, private store: Store<PageSorterStore>) {
+		this.pages = store.select('pages');
+		this.piles = store.select('piles');
 		this.selectedPage = store.select('selectedPage');
-		this.imageDataList = [];
+
+		this.getThumbnails();
 	}
 
 	selectPage(page: Page) {
 		this.store.dispatch({ type: 'SELECT_PAGE', payload: page });
 	}
 
-	selectBucket(bucket: Bucket) {
-		this.store.dispatch({ type: "SELECT_BUCKET", payload: bucket });
+	selectPile(pile: Pile) {
+		this.store.dispatch({ type: "SELECT_PILE", payload: pile });
 	}
 
-	addBucket() {
-		this.store.dispatch({ type: "ADD_BUCKET"});
+	addPile() {
+		this.store.dispatch({ type: "ADD_PILE"});
 	}
 
 	getThumbnails() {
-		this.pagesService.getPdfImage().then(imageDataList => {
-            for (var i = 0; i < imageDataList.length; i++) {
-                this.imageDataList[i] = this.sanitizer.bypassSecurityTrustUrl("data:image/png;base64," + imageDataList[i]);
-            }
-        });
+		this.pagesService.getPdfImages();
 	}
 }

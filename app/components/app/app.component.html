@@ -1,10 +1,10 @@
-<selectedPage [selectedPage]="selectedPage | async"></selectedPage>
+<selectedPage *ngIf="selectedPage" [selectedPage]="selectedPage | async"></selectedPage>
 
-<div id="bucketList">
-    <bucketList [buckets]="buckets | async" (selectBucket)="selectBucket($event)"></bucketList>
+<div id="pileList">
+    <pileList [piles]="piles | async" (selectPile)="selectPile($event)"></pileList>
 </div>
 
-<button (click)="addBucket()">Add Bucket</button>
+<button (click)="addPile()">Add Pile</button>
 
 <div id="pageList">
     <pages [pages]="pages | async" (selectPage)="selectPage($event)"></pages>
